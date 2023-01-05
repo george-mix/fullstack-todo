@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  mongo_db:
+    image: mongo:4.2
+    restart: always
+
+  express_api:
+    build: ./server
+    restart: always
+    ports:
+      - 5000:5000
+    volumes:
+      - /app/server/node_modules
+      - ./server:/app/server
+    environment:
+      PORT: 5000
+      MONGODB_URI: mongodb://mongo_db:27017
+      DB_NAME: todos_db
+      DB_USER: user
+      DB_PASS: 123
+    depends_on:
+      - mongo_db
+
+  nuxt_app:
+    build: ./client
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - /app/client/node_modules
+      - ./client:/app/client

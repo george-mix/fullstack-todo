@@ -1,0 +1,17 @@
+{
+  "name": "todo-client",
+  "version": "1.0.0",
+  "private": true,
+  "license": "ISC",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/webpack-builder": "^3.0.0",
+    "nuxt": "3.0.0"
+  }
+}
