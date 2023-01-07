@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import { connectToDb } from "./helpers/connectToDb";
+import todoRouter from "./modules/todos/todo.route";
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -13,9 +14,7 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Test connection");
-});
+app.use("/todos", todoRouter);
 
 app.listen(PORT, async () => {
   console.log(`Server running on port http://localhost:${PORT}`);
