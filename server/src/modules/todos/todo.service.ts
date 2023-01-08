@@ -1,4 +1,4 @@
-import { FilterQuery } from "mongoose";
+import { FilterQuery, QueryOptions, UpdateQuery } from "mongoose";
 import { TodoModel } from "./todo.model";
 import type { Todo } from "./todo.type";
 
@@ -17,3 +17,11 @@ export const createTodo = (todo: Todo) => {
 export const deleteTodo = (query: FilterQuery<Todo>) => {
   return TodoModel.deleteOne(query);
 };
+
+export async function findAndUpdateTodo(
+  query: FilterQuery<Todo>,
+  update: UpdateQuery<Todo>,
+  options: QueryOptions = { new: true }
+) {
+  return TodoModel.findOneAndUpdate(query, update, options);
+}

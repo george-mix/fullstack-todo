@@ -11,9 +11,11 @@ export const connectToDb = async () => {
     await mongoose.connect(dbUri, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
+      useFindAndModify: false,
     });
     console.log("DB connected");
   } catch (error) {
+    console.error(error);
     console.error("Could not connect to db");
     process.exit(1);
   }
