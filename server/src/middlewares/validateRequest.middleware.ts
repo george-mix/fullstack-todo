@@ -11,6 +11,7 @@ export const validateRequest =
         query: req.query,
         params: req.params,
       });
+
       return next();
     } catch (error) {
       return res.status(StatusCodes.BAD_REQUEST).json(error);

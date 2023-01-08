@@ -6,4 +6,11 @@ const todoSchemaBody = {
   }),
 };
 
+const todoSchemaParams = {
+  params: object({
+    _id: string(),
+  }),
+};
+
 export const createTodoSchema = object({ ...todoSchemaBody });
+export const deleteTodoSchema = object({ ...todoSchemaParams });
