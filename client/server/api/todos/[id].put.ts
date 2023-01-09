@@ -5,13 +5,16 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event);
   const parsedBody = JSON.stringify(body);
 
-  const response = await fetch(`${API_BASE_URL}/todos`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: parsedBody,
-  });
+  const response = await fetch(
+    `${API_BASE_URL}/todos/${event.context.params.id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: parsedBody,
+    }
+  );
 
   const todo = await response.json();
   const result = TodoValidation.parse(todo);

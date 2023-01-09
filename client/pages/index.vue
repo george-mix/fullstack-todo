@@ -1,7 +1,7 @@
 <template>
   <PageHeading>{{ textContent.todoList }}</PageHeading>
 
-  <div class="center">
+  <div class="button-container center">
     <Button @click="handleCreateTodo" color="primary">
       {{ textContent.createNewTodo }}
     </Button>
@@ -26,3 +26,9 @@ const handleCreateTodo = () => {
   router.push("/todos/new");
 };
 </script>
+
+<style scoped>
+.button-container {
+  padding: 10px;
+}
+</style>

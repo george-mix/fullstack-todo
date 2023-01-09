@@ -3,6 +3,12 @@ import type { TodoItem, TodoPayload } from "~~/types/todos";
 export const useTodoStore = () => {
   const todos = useState<TodoItem[]>("todos", () => []);
 
+  const getTodo = async (id: TodoItem["_id"]) => {
+    const { data } = await useFetch<TodoItem>(`/api/todos/${id}`);
+
+    return data.value;
+  };
+
   const getTodos = async () => {
     const { data } = await useFetch<TodoItem[]>("/api/todos");
 
@@ -11,10 +17,10 @@ export const useTodoStore = () => {
     }
   };
 
-  const postTodo = async (todoPayload: TodoPayload) => {
+  const postTodo = async (payload: TodoPayload) => {
     const { data } = await useFetch<TodoItem>("/api/todos", {
       method: "POST",
-      body: todoPayload,
+      body: payload,
     });
 
     if (data.value) {
@@ -24,5 +30,14 @@ export const useTodoStore = () => {
     return data.value;
   };
 
-  return { todos, getTodos, postTodo };
+  const updateTodo = async (id: TodoItem["_id"], payload: TodoPayload) => {
+    const { data } = await useFetch<TodoItem>(`/api/todos/${id}`, {
+      method: "PUT",
+      body: payload,
+    });
+
+    return data.value;
+  };
+
+  return { todos, getTodos, postTodo, getTodo, updateTodo };
 };
