@@ -24,6 +24,7 @@ services:
     restart: always
     ports:
       - 3000:3000
+      - 24678:24678
     environment:
       API_BASE_URL: http://express_api:5000
     volumes:
