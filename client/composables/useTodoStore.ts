@@ -39,5 +39,12 @@ export const useTodoStore = () => {
     return data.value;
   };
 
-  return { todos, getTodos, postTodo, getTodo, updateTodo };
+  const deleteTodo = async (id: TodoItem["_id"]) => {
+    await useFetch<Response>(`/api/todos/${id}`, {
+      method: "DELETE",
+    });
+    await getTodos();
+  };
+
+  return { todos, getTodos, postTodo, getTodo, updateTodo, deleteTodo };
 };

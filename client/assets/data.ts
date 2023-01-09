@@ -3,4 +3,5 @@ export const textContent = {
   createNewTodo: "Create New Todo",
   updateTodo: "Update Todo",
   cancel: "Cancel",
+  deleteTodo: "Delete Todo",
 };

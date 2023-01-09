@@ -5,6 +5,9 @@
       <Button @click="handleUpdateTodo" color="primary" outlined>
         {{ textContent.updateTodo }}
       </Button>
+      <Button @click="handleDeleteTodo" color="secondary">
+        {{ textContent.deleteTodo }}
+      </Button>
     </div>
   </li>
 </template>
@@ -16,11 +19,16 @@ const props = defineProps<{
   todo: TodoItem;
 }>();
 
+const { deleteTodo } = useTodoStore();
 const textContent = useTextContent();
 const router = useRouter();
 
 const handleUpdateTodo = () => {
   router.push(`/todos/${props.todo._id}`);
+};
+
+const handleDeleteTodo = async () => {
+  await deleteTodo(props.todo._id);
 };
 </script>
 

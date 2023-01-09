@@ -41,7 +41,7 @@ const handleSubmit = async (todoPayload: TodoPayload) => {
     todo?._id && router.push(`/todos/${todo._id}`);
   }
 
-  if (isRouteIdString) {
+  if (!isNewRoute && isRouteIdString) {
     await updateTodo(routeId, todoPayload);
   }
 };
