@@ -12,6 +12,7 @@ const todoSchemaParams = {
   }),
 };
 
+export const getTodoSchema = object({ ...todoSchemaParams });
 export const createTodoSchema = object({ ...todoSchemaBody });
 export const deleteTodoSchema = object({ ...todoSchemaParams });
 export const updateTodoSchema = object({

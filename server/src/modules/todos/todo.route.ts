@@ -3,18 +3,22 @@ import { validateRequest } from "../../middlewares/validateRequest.middleware";
 import {
   createTodoController,
   deleteTodoController,
+  getTodoController,
   getTodosController,
   updateTodoController,
 } from "./todo.controller";
 import {
   createTodoSchema,
   deleteTodoSchema,
+  getTodoSchema,
   updateTodoSchema,
 } from "./todo.validation";
 
 const router = express.Router();
 
 router.get("/", getTodosController);
+
+router.get("/:_id", validateRequest(getTodoSchema), getTodoController);
 
 router.post("/", validateRequest(createTodoSchema), createTodoController);
 
