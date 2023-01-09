@@ -1,12 +1,12 @@
 <template>
-  <div>app</div>
+  <main class="main">
+    <NuxtPage />
+  </main>
 </template>
 
-<script setup lang="ts">
-try {
-  const data = await $fetch("http://localhost:5000");
-  console.log(data);
-} catch (error) {
-  console.log(error);
+<style scoped>
+.main {
+  margin: 100px auto;
+  max-width: 800px;
 }
-</script>
+</style>
